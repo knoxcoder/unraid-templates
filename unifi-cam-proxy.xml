@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Containers>
+  <TemplateURL>https://raw.githubusercontent.com/knoxcoder/unraid-templates/master/unifi-cam-proxy.xml</TemplateURL>
+  <Beta>False</Beta>
+  <Category>Downloaders:</Category>
+  <Name>unifi-cam-proxy</Name>
+  <Description>
+    This enables using non-Ubiquiti cameras within the UniFi Protect ecosystem. This is particularly useful to use existing RTSP-enabled cameras in the same UI and mobile app as your other Unifi devices.
+  </Description>
+  <Registry>https://registry.hub.docker.com/r/keshavdv/unifi-cam-proxy/</Registry>
+  <GitHub>https://github.com/keshavdv/unifi-cam-proxy</GitHub>
+  <Repository>keshavdv/unifi-cam-proxy</Repository>
+  <Project>https://unifi-cam-proxy.com/</Project>
+  <Environment>
+    <Variable>
+      <Name>NVR_IP</Name>
+      <Value></Value>
+    </Variable>
+    <Variable>
+      <Name>CERT</Name>
+      <Value>/config/client.pem</Value>
+    </Variable>
+    <Variable>
+      <Name>TOKEN</Name>
+      <Value></Value>
+    </Variable>
+    <Variable>
+      <Name>MAC</Name>
+      <Value></Value>
+    </Variable>   
+  </Environment>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/config</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Icon>https://raw.githubusercontent.com/binhex/docker-templates/master/binhex/images/deluge-icon.png</Icon>
+  <ExtraParams>--host ${NVR_IP} --mac ${MAC} --cert ${CERT} --token ${TOKEN} rtsp -s rtsp://192.168.201.15:8554/cam</ExtraParams>
+</Containers>
